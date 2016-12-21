@@ -31,6 +31,7 @@ module.exports = function (app) {
             }
         }
     }).engine);
+
     app.set('view engine', 'handlebars');
 
     return app;

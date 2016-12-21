@@ -2,8 +2,11 @@ module.exports = {
     initMongo: function () {
         var mongoose = require('mongoose');
         mongoose.connect('mongodb://localhost/imgPloadr');
-        mongoose.connection.on('open', function () {
-            console.log('Mongoose connected.');
+        var db = mongoose.connection;
+        db.on('error', console.error.bind(console, 'connection error:'));
+        db.once('open', function () {
+            console.log("Mongodb connnected")
         });
+
     }
 }

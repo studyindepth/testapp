@@ -9,15 +9,16 @@ module.exports = {
             image: {},
             comments: []
         };
-        Models.Image.findOne({filename: {$regex: req.params.image_id}}, function (err, image) {
+        Models.Image.findOne({filename: {$regex: req.params.image_id}}, function (err, image) {s
             if (err) throw err;
             if (image) {
                 viewModel.image = image;
-                res.render('layouts/image', viewModel);
+                res.render('image', viewModel);
             } else {
                 res.redirect('/');
             }
         });
+        throw new Error('Cannot connect to mongo');
     },
     create: function (req, res) {
         var saveImage = function () {
